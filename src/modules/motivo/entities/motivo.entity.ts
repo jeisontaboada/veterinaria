@@ -10,7 +10,7 @@ export class Motivo {
   detalleMotivo: string;
 
   @OneToMany(() => Mascota, (mascota) => mascota.motivo)
-  idMascota: Mascota[];
+  mascota: Mascota[];
 
   
 }

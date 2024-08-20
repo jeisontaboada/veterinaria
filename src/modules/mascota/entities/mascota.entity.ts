@@ -1,6 +1,7 @@
+import { Cita } from 'src/modules/cita/entities/cita.entity';
 import { Motivo } from 'src/modules/motivo/entities/motivo.entity';
 import { Usuario } from 'src/modules/usuario/entities/usuario.entity';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('mascota')
 export class Mascota {
@@ -19,7 +20,7 @@ export class Mascota {
     length: 100,
     nullable: false,
   })
-  raza: String;
+  raza: string;
 
   @Column({
     type: 'int',
@@ -38,6 +39,11 @@ export class Mascota {
   motivo: Motivo;
 
 
-  @ManyToOne(() => Usuario, (usuario) => usuario.mascota)
-  usuario: Usuario[];
+  @ManyToOne(() => Usuario, (usuario) => usuario.mascota )
+  usuario: Usuario;
+
+ 
+
+
+
 }

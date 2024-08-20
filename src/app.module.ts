@@ -8,8 +8,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { CitaModule } from './modules/cita/cita.module';
 import { MascotaModule } from './modules/mascota/mascota.module';
 import { MotivoModule } from './modules/motivo/motivo.module';
-import { JeisonModule } from './prueba/jeison/jeison.module';
-import { GraphModule } from './prueba/graph/graph.module';
+
 
 @Module({
   imports: [
@@ -29,8 +28,6 @@ import { GraphModule } from './prueba/graph/graph.module';
     CitaModule,
     MascotaModule,
     MotivoModule,
-    JeisonModule,
-    GraphModule,
   ],
   controllers: [],
   providers: [],

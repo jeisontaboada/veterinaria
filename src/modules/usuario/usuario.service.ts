@@ -25,14 +25,27 @@ export class UsuarioService {
 
     const usuario = this.repo.create({ nombre: dto.nombre, contrasenia: dto.clave, tipoUsuario: tipoUsuario });
     await this.repo.save(usuario);
+    delete usuario.contrasenia;
     return usuario;
   }
 
   async findAll() {
     return (await this.repo.find()).map((usuario) => {
       return {
-        ...usuario,
+        id: usuario.id,
+        usuario:usuario.nombre,
         tipoUsuario: usuario.tipoUsuario.nombre,
+        mascota:usuario.mascota.map( mascota => {
+          return {
+            id: mascota.id,
+            nombre: mascota.nombre,
+            raza: mascota.raza,
+            edad: mascota.edad,
+            especie: mascota.especie,
+            motivo: mascota.motivo.detalleMotivo,
+          }
+        })
+       
       };
     });
   }

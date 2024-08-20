@@ -1,6 +1,13 @@
-import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { TipoUsuario } from './tipo-usuario.entity';
 import { Mascota } from 'src/modules/mascota/entities/mascota.entity';
+import { Cita } from 'src/modules/cita/entities/cita.entity';
 
 @Entity({ name: 'usuario' })
 export class Usuario {
@@ -21,12 +28,13 @@ export class Usuario {
   )
   tipoUsuario: TipoUsuario;
 
-
   @OneToMany(
     () => Mascota,
     (mascota) => mascota.usuario,
-
-    { eager: true },
+    {eager:true}
   )
-  mascota: Mascota;
+  mascota: Mascota[];
+
+  @OneToMany(() => Cita, (cita) => cita.cliente)
+  cita: Cita;
 }
